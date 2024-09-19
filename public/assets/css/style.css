@@ -1,0 +1,471 @@
+.dropdown-menu.show{
+    box-shadow: rgb(73 84 90 / 18%) 0px 0.5rem 1rem;
+    border: 1px solid rgba(73, 84, 90, 0.15);
+}
+.fa.fa-facebook-official {
+    color: #3b5998;
+}
+.fa.fa-google {
+    color: #2aa651;
+}
+.fa.fa-instagram{
+    color: #b52f9f; 
+}
+.fa.fa-linkedin-square{
+    color: #0077b5; 
+}
+.fa.fa-twitter-square{
+    color: #00aced; 
+}
+.btn-close{
+    color: #8193a5;
+}
+.btn-close:hover{
+    color: #000;
+}
+.form-control{
+    /* border: 1px solid #D5DBE5; */
+}
+.form-control:focus{
+    background-color:#D5DBE5;
+}
+
+.text-pm{
+    color:#FA4C03 !important;
+}
+.text-pm-50{
+    color:#FA4C03 !important;
+    opacity: .5;
+}
+
+
+
+#create_new_post .remove-image {
+    display: none;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.3);
+    line-height: 160px;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+
+#create_new_post .thumbnail-image {
+    display: block;
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border: 1px solid #d7e0e2;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px #ebeff3;
+}
+
+#edit_post .remove-image {
+    display: none;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.3);
+    line-height: 160px;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+
+#edit_post .thumbnail-image {
+    display: block;
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border: 1px solid #d7e0e2;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px #ebeff3;
+}
+
+#copy_post .remove-image {
+    display: none;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.3);
+    line-height: 160px;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+
+#copy_post .thumbnail-image {
+    display: block;
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border: 1px solid #d7e0e2;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px #ebeff3;
+}
+
+/* Right side modal     ........... start*/
+
+.modal-dialog-slideout {min-height: 100%; margin: 0 0 0 auto;background: #fff;}
+.modal.fade .modal-dialog.modal-dialog-slideout {-webkit-transform: translate(100%,0)scale(1);transform: translate(100%,0)scale(1);}
+.modal.fade.show .modal-dialog.modal-dialog-slideout {-webkit-transform: translate(0,0);transform: translate(0,0);display: flex;align-items: stretch;-webkit-box-align: stretch;height: 100%;}
+.modal.fade.show .modal-dialog.modal-dialog-slideout .modal-body{overflow-y: auto;overflow-x: hidden;}
+.modal-dialog-slideout .modal-content{border: 0;}
+.modal-dialog-slideout .modal-header, .modal-dialog-slideout .modal-footer {height: 69px; display: block;} 
+.modal-dialog-slideout .modal-header h5 {float:left;}
+
+/* Right side modal     ........... end*/
+
+.post-content .add-image{
+    width: 100%;
+    height: 185px;
+    background: url(/img/svg/media.svg) #ebeff3 no-repeat;
+    background-size: 50%;
+    background-position: 50%;
+    border: 0;
+    line-height: 160px;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 10px;
+}
+.textarea-container .text-actions{
+    width: 100%;
+    border: 1px solid #d7e0e2;
+    border-radius: 10px 10px 0 0;
+}
+.group-selector-row{
+    padding: 15px 29px;
+    border-top: 1px solid #ebeff3;
+    border-bottom: 1px solid #ebeff3;
+}
+.modal-dialog-slideout{
+    max-width: 600px;
+}
+.schedule-day .btn-group{
+    width: 100%;
+}
+.schedule-day .btn-group a{
+    border-color: #d7e0e2 !important;
+    border: 1px solid;
+    text-transform: capitalize;
+    font-size: 15px;
+    font-weight: 400;
+}
+.schedule-day .btn-group a:hover{
+    background-color: #eef2f7 !important;
+}
+#timePicker .input-group-addon, #datePicker .input-group-addon{
+    padding: 12px;
+    line-height: 1;
+    color: #555;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.custom-checkbox a{
+    border-radius: 9999em;
+    background: #ebeff3;
+    padding: 5px 12px;
+    font-size: 15px;
+}
+
+
+
+
+
+#create_new_post .add-image {
+    width: 100%;
+    height: 160px;
+    background: url(/assets/img/media.svg) #ebeff3 no-repeat;
+    background-size: 50%;
+    background-position: 50%;
+    border: 0;
+    line-height: 160px;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+#create_new_post .add-image a {
+    display: block;
+    width: 100%;
+    height: 160px;
+}
+
+#create_new_post .add-image a:hover {
+    background: #e91e630f !important;
+}
+#create_new_post .custom-control {
+    position: relative;
+    display: block;
+    min-height: 21;
+    padding-left: 1.5rem;
+}
+#create_new_post .custom-control {
+    display: inline-block;
+    padding: 0;
+    margin: 4px;
+}
+
+#edit_post .add-image {
+    width: 100%;
+    height: 160px;
+    background: url(/assets/img/media.svg) #ebeff3 no-repeat;
+    background-size: 50%;
+    background-position: 50%;
+    border: 0;
+    line-height: 160px;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+#edit_post .add-image a {
+    display: block;
+    width: 100%;
+    height: 160px;
+}
+
+#edit_post .add-image a:hover {
+    background: #e91e630f !important;
+}
+#edit_post .custom-control {
+    position: relative;
+    display: block;
+    min-height: 21;
+    padding-left: 1.5rem;
+}
+#edit_post .custom-control {
+    display: inline-block;
+    padding: 0;
+    margin: 4px;
+}
+
+#copy_post .add-image {
+    width: 100%;
+    height: 160px;
+    background: url(/assets/img/media.svg) #ebeff3 no-repeat;
+    background-size: 50%;
+    background-position: 50%;
+    border: 0;
+    line-height: 160px;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+#copy_post .add-image a {
+    display: block;
+    width: 100%;
+    height: 160px;
+}
+
+#copy_post .add-image a:hover {
+    background: #e91e630f !important;
+}
+#copy_post .custom-control {
+    position: relative;
+    display: block;
+    min-height: 21;
+    padding-left: 1.5rem;
+}
+#copy_post .custom-control {
+    display: inline-block;
+    padding: 0;
+    margin: 4px;
+}
+.custom-control-input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.custom-control label {
+    font-size: 14px!important;
+    padding: 5px 12px 5px 40px;
+    border-radius: 9999em;
+    background: #ebeff3;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+.custom-control-label i {
+    position: absolute;
+    top: 9px;
+    left: 17px;
+}
+#edit_post .custom-checkbox input[type=checkbox]:checked+label {
+    background: #fa4c03 !important;
+    color: #fff;
+}
+
+#create_new_post .custom-checkbox input[type=checkbox]:checked+label {
+    background: #fa4c03 !important;
+    color: #fff;
+}
+
+#copy_post .custom-checkbox input[type=checkbox]:checked+label {
+    background: #fa4c03 !important;
+    color: #fff;
+}
+
+
+.post-list .thumbnail-image {
+    display: block;
+    width: 274px;
+    height: 274px;
+    overflow: hidden;
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border-radius: 10px 10px 0 0;
+}
+#post-planner .thumbnail-image {
+    width: unset!important;
+    background-size: contain!important;
+    background-color: #f3f5f8;
+}
+#post-planner .btn-group .btn {
+    background: #ededed!important;
+}
+
+.post-list .add-image {
+    width: 100%;
+    height: 180px;
+    background-image: url(/assets/img/media1.svg);
+    background-repeat: no-repeat;
+    background-color: #dbe2e9;
+    background-size: 15%;
+    background-position: 50%;
+    border: 0;
+    line-height: 180px;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
+.btn-primary{
+    background-color: #fa4c03;
+}
+
+.btn-primary:hover{
+    background-color: #fa4c03;
+}
+
+.fc .fc-button-primary{
+    background-color: #fa4c03;
+}
+
+.btn-outline-primary{
+    color: #fa4c03;
+    border-color: #fa4c03;
+}
+
+.btn .btn-outline-primary:hover{
+    background-color: #fa4c03;
+}
+
+@media screen  and (max-width: 576px){
+
+    .fc .fc-toolbar{
+        display: block;
+    }
+
+    .fc .fc-toolbar > .fc-toolbar-chunk{
+       margin-bottom: 8px;
+    }
+
+    .fc-col-header-cell{
+        width: 150px;
+    }
+
+    .fc-daygrid-day{
+        width: 150px;
+    }
+
+    .fc-daygrid-body{
+        overflow: scroll;
+    }
+}
+
+
+.testimonial-section {
+    padding: 60px 0;
+}
+.testimonial-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+.testimonial-card h5 {
+    font-weight: bold;
+}
+.testimonial-card p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+.testimonial-card .client-name {
+    font-weight: bold;
+    font-size: 1em;
+    color: #6c757d;
+}
+.success-stories {
+    margin-top: 50px;
+}
+.success-stories h3 {
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.success-stories ul {
+    list-style: none;
+    padding: 0;
+}
+.success-stories ul li {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+.success-stories ul li::before {
+    content: "✔️";
+    margin-right: 10px;
+    color: #28a745;
+}
