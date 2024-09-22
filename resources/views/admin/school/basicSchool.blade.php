@@ -42,8 +42,7 @@
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             ID</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            school Type</th>
+                                       
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Name</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -69,7 +68,6 @@
                                     @forelse ($schools as $school)
                                     <tr>
                                         <td>{{ $school->id }}</td>
-                                        <td>{{ $school->type }}</td>
                                         <td>{{ $school->name }}</td>
                                         <td>{{ $school->region }}</td>
                                         <td>{{ $school->district }}</td>
@@ -79,11 +77,11 @@
                                         <td>{{ $school->user_id }}</td>
                                         <td>
 
-                                        <form method="POST" action="">
+                                        <form method="POST" action="{{ route('school.delete',$school->id)}}">
                                                 @csrf
                                               
                                                 <a rel="tooltip" class="btn btn-success btn-link"
-                                                    href="" data-original-title=""
+                                                    href="{{ route('school.eidt',$school->id)}}" data-original-title=""
                                                     title="">
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>

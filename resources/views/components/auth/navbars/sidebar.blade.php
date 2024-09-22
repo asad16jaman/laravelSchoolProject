@@ -1,6 +1,7 @@
 @php
     $user = 5
 @endphp
+
 @props(['activePage', 'activeItem', 'activeSubitem'])
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-white" id="sidenav-main">
     <div class="sidenav-header text-center">
@@ -107,6 +108,13 @@
                     <a href="{{ route('users') }}" class="nav-link text-dark {{ $activePage == 'schools-create' ? ' active ' : '' }} ">
                         <i class="material-icons-round opacity-10">dashboard</i>
                         <span class="nav-link-text ms-2 ps-1">Users</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('template') }}" class="nav-link text-dark {{ $activePage == 'template' ? ' active ' : '' }} ">
+                        <i class="material-icons-round opacity-10">upload</i>
+                        <span class="nav-link-text ms-2 ps-1">Template</span>
                     </a>
                 </li>
 
