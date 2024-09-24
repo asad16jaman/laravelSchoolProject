@@ -19,5 +19,9 @@ class School extends Model
             'user_id',
     ];
 
+    function user(){
+        return $this->belongsTo(User::class);
+    }
+
     
 }

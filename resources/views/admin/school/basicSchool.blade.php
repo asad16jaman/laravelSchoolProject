@@ -59,13 +59,15 @@
                                            User</th>
                                       
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Template</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Actions</th>
                                      
                                     </tr>
                                 </thead>
                                 <tbody>
                                 
-                                    @forelse ($schools as $school)
+                                    @foreach ($schools as $school)
                                     <tr>
                                         <td>{{ $school->id }}</td>
                                         <td>{{ $school->name }}</td>
@@ -74,7 +76,30 @@
                                         <td>{{ $school->address }}</td>
                                         <td>{{ $school->headmaster_name }}</td>
                                         <td>{{ $school->contact }}</td>
-                                        <td>{{ $school->user_id }}</td>
+                                        <td>{{ $school->user->name }}</td>
+                                        <td>
+                                        <a data-bs-toggle="collapse" href="#ProfileNav{{$school->id}}" class="nav-link text-dark btn btn-primary" aria-controls="ProfileNav" role="button" aria-expanded="false">
+                                               Template Action  
+                                            </a>
+                                            <div class="collapse" id="ProfileNav{{$school->id}}" style="">
+                                                <ul class="nav ">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" href="{{ route('admin.download',$school->id) }}">
+                                                        <i class="material-icons-round opacity-10">download</i>
+                                                        <span class="nav-link-text ms-2 ps-1">Download</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark " href="{{ route('admin.upload',$school->id)}}">
+                                                        <i class="material-icons-round opacity-10">edit</i>
+                                                        <span class="nav-link-text ms-2 ps-1">Edit</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+
+
                                         <td>
 
                                         <form method="POST" action="{{ route('school.delete',$school->id)}}">
@@ -96,13 +121,11 @@
                                                 </button>
                                                 
                                             </form>
+
                                         </td>
                                     </tr>
 
-                                    @empty
-                                        
-
-                                    @endforelse
+                                    @endforeach
                                   
                                     
                                 </tbody>

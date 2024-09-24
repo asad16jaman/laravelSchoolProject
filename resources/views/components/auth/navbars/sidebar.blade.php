@@ -1,7 +1,3 @@
-@php
-    $user = 5
-@endphp
-
 @props(['activePage', 'activeItem', 'activeSubitem'])
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-white" id="sidenav-main">
     <div class="sidenav-header text-center">
@@ -17,9 +13,16 @@
             <!-- //admin Section start------------------------------ -->
             <li class="nav-item mb-2 mt-0">
                 <a data-bs-toggle="collapse" href="#ProfileNav" class="nav-link text-dark" aria-controls="ProfileNav" role="button" aria-expanded="false">
+                    @if(Auth::user()->picture)
+                        <img src="{{ asset('storage').'/'.Auth::user()->picture }}" alt="avatar" class="avatar">
+                    @else
                     <img src="{{ asset('assets') }}/img/default-avatar.png" alt="avatar" class="avatar">
-                    @if($user == 1)
-                    <span class="nav-link-text ms-2 ps-1">User</span>
+                    @endif
+
+                    
+                    
+                    @if(Auth::user()->role_id == '1')
+                    <span class="nav-link-text ms-2 ps-1">{{Auth::user()->name }}</span>
                     @else
                     <span class="nav-link-text ms-2 ps-1">Admin</span>
                     @endif
@@ -28,7 +31,7 @@
                 <div class="collapse" id="ProfileNav" style="">
                     <ul class="nav ">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="">
+                            <a class="nav-link text-dark" href="{{ route('user-profile') }}">
                                 <span class="sidenav-mini-icon"> MP </span>
                                 <span class="sidenav-normal  ms-3  ps-1"> My Profile </span>
                             </a>
@@ -53,7 +56,9 @@
             </li>
             <!-- //admin Section end------------------------------ -->
 
-            @if($user == 1)
+            
+
+            @if(Auth::user()->role_id == '1')
 
 
                 <!-- //School route for Admin Start ------------------------------ -->
@@ -65,7 +70,7 @@
                     <div class="collapse" id="viewSchool" style="">
                         <ul class="nav ">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="{{ route('user.upload')}}">
+                                <a class="nav-link text-dark" href="{{ route('template.upload')}}">
                                 <i class="material-icons-round opacity-10">upload</i>
                                     <span class="sidenav-normal  ms-3  ps-1">File Upload</span>
                                 </a>
@@ -76,13 +81,13 @@
                 <!-- //School route for Admin end------------------------------ -->
 
                 <li class="nav-item">
-                    <a href="" class="nav-link text-dark {{ $activePage == 'calendar' ? ' active ' : '' }} ">
+                    <a href="{{ route('template.download') }}" class="nav-link text-dark {{ $activePage == 'calendar' ? ' active ' : '' }} ">
                         <i class="material-icons-round opacity-10">download</i>
                         <span class="nav-link-text ms-2 ps-1">Download Template</span>
                     </a>
                 </li> 
                 <li class="nav-item">
-                    <a href="{{ route('user.download')}}" class="nav-link text-dark {{ $activePage == 'calendar' ? ' active ' : '' }} ">
+                    <a href="{{ route('assesment.download') }}" class="nav-link text-dark {{ $activePage == 'calendar' ? ' active ' : '' }} ">
                         <i class="material-icons-round opacity-10">download</i>
                         <span class="nav-link-text ms-2 ps-1">Assessment Download</span>
                     </a>

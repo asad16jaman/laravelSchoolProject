@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
@@ -21,9 +22,7 @@ use App\Http\Controllers\UserManagementController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.index');
-})->name('dashboard')->middleware('auth');
+Route::get('/', [DashboardController::class,'index'])->name('dashboard')->middleware('auth');
 
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('sign-up', [RegisterController::class, 'store'])->middleware('guest');
@@ -59,8 +58,11 @@ Route::get('edit-role/{id}', [RolesController::class, 'edit'])->middleware('auth
 
 Route::middleware(['auth'])->group(function(){
 
-    Route::get('/create',[UserSchoolController::class ,'create'])->name('user.upload');
-    Route::get('/download',[UserSchoolController::class ,'download_assesment'])->name('user.download');
+    Route::get('/upload',[UserSchoolController::class ,'create'])->name('template.upload');
+    Route::post('/upload',[UserSchoolController::class ,'store']);
+    Route::get('/template-download',[UserSchoolController::class ,'template'])->name('template.download');
+    Route::get('/assesment-download',[UserSchoolController::class ,'download'])->name('assesment.download');
+    Route::post('/assesment-download',[UserSchoolController::class ,'confirm_download'])->name('assesment.download');
 
     Route::get('/basic-view',[AdminSchoolController::class,'basicSchool_index'])->name('basic.index');
     Route::get('/senior-view',[AdminSchoolController::class,'seniorSchool_index'])->name('senior.index');
@@ -71,10 +73,18 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/school-edit/{id}',[AdminSchoolController::class,'edit'])->name('school.eidt');
     Route::post('/school-edit/{id}',[AdminSchoolController::class,'update'])->name('school.update');
     Route::post('/school-delete/{id}',[AdminSchoolController::class,'destroy'])->name('school.delete');
+
     
-    //storing template
+    //storing template admin
     Route::get('/template',[TemplateController::class,'create'])->name('template');
     Route::post('/template',[TemplateController::class,'store'])->name('template.store');
+    //download template admin
+    Route::get('/download-template/{id}',[TemplateController::class,'download_template'])->name('admin.download');
+    Route::post('/download-template/{id}',[TemplateController::class,'downloaded'])->name('admin.download');
+    //upload checked templat admin
+    Route::get('/upload-template/{id}',[TemplateController::class,'upload'])->name('admin.upload');
+    Route::post('/upload-template/{id}',[TemplateController::class,'template_store'])->name('admin.upload');
+
 
     //creating user by admin
     Route::get('users-management', [UserManagementController::class, 'index'])->name('users');

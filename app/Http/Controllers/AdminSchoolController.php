@@ -12,7 +12,11 @@ class AdminSchoolController extends Controller
     //
 
     function basicSchool_index(){
-        $schools = School::where('type' , 'basic')->get();
+        $schools = School::with(['user' => function($query){
+            $query->select('id','name');
+            
+        }])->where('type' , 'basic')->get();
+
         return view('admin.school.basicSchool',['schools'=>$schools]);
     }
 
@@ -22,7 +26,9 @@ class AdminSchoolController extends Controller
     }
 
     function create(){
-        $user = User::all();
+        $user = User::where('school',false)->get();
+
+      
         return view('admin.school.create',['users'=>$user]);
     }
 
@@ -46,6 +52,9 @@ class AdminSchoolController extends Controller
         }
 
         $ob = School::create($request->all());
+        $user = User::find($request->user_id);
+        $user->school = true;
+        $user->save();
 
         if($ob->type == 'basic'){
             return redirect()->route('basic.index')->with('status','successfully added Basic school');
@@ -93,10 +102,17 @@ class AdminSchoolController extends Controller
     }
 
     public function destroy($id){
+
         $entity = School::findOrFail($id);
+
         $schoolType = $entity->type;
         if($entity){
+            $userId = $entity->user_id;
             $entity->delete();
+            $user = User::find($userId);
+            $user->school = false;
+            $user->save();
+
             if($schoolType == 'basic'){
                 return redirect()->route('basic.index')->with('status','successfully delete Basic school');
             }else{
@@ -114,7 +130,7 @@ class AdminSchoolController extends Controller
 
 
 
-
+    
 
 
 

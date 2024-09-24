@@ -8,12 +8,12 @@
 
             <div class="card my-3 p-5">
                 <div class="card-title">
-                    <h3 class="text-center">{{ ucfirst($school[0]->name) }}</h3>
+                    <h3 class="text-center">{{ ucfirst($school->name) }}</h3>
                 </div>
 
-                <form action="" method="post" enctype ="multipart/form-data">
+                <form action="" method="post">
                     @csrf
-                    <input type="text" name="school_id" style="display:none" value="{{ $school[0]->id }}" id="">
+                    <input type="text" name="school_id" style="display:none" value="{{ $school->id }}" id="">
                     <div class="row">
                         <div class="col-md-6">
                             <div>
@@ -36,7 +36,7 @@
                                 <label for="">Option Select</label>
                                 <select name="option" id="" class="form-select px-3 @error('option') is-invalid @enderror">
                                     <option value="">Select Option</option>
-                                    @if($school[0]->type == 'basic')
+                                    @if($school->type == 'basic')
                                     <option value="1" @selected(old('option' == '1'))>1</option>
                                     <option value="2" @selected(old('option' == '2'))>2</option>
                                     <option value="3" @selected(old('option' == '3'))>3</option>
@@ -64,19 +64,9 @@
 
                         </div>
                     </div>
-                    <div class="row">
-                       <div class="col-12 mt-3">
-                            <div class="mb-3">
-                                <label for="upload_file">Select file</label>
-                                <input type="file" name="path" id="" class="form-control border px-3 @error('path') is-invalid @enderror">
-                                @error('path')
-                                    <p class="text-danger" style="font-size:14">{{ $message}}</p>
-                                @enderror
-                            </div>
-                       </div>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                    <input type="submit" value="Submit" class="btn btn-success">
+                    
+                    <div class="d-flex justify-content-end mt-3">
+                    <input type="submit" value="Download" class="btn btn-success">
                     </div>
                 </form>
 

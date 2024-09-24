@@ -55,7 +55,7 @@
 
                                     <div class="input-group input-group-outline mt-3">
                                         <label class="form-label">Password</label>
-                                        <input type="password" class="form-control" name='password' value='asad1234'>
+                                        <input type="password" class="form-control" name='password' value='12345678'>
                                     </div>
                                     @error('password')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
