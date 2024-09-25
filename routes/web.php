@@ -48,12 +48,12 @@ Route::post('user-profile', [UserController::class, 'update'])->middleware('auth
 Route::post('user-profile/password', [UserController::class, 'passwordUpdate'])->middleware('auth')->name('password.change');
 
 
-Route::get('roles', [RolesController::class, 'index'])->middleware('auth')->name('roles');
-Route::post('roles/{id}', [RolesController::class, 'destroy'])->middleware('auth')->name('delete.role');
-Route::get('new-role', [RolesController::class, 'create'])->middleware('auth')->name('add.role');
-Route::post('new-role', [RolesController::class, 'store'])->middleware('auth');
-Route::post('edit-role/{id}', [RolesController::class, 'update'])->middleware('auth');
-Route::get('edit-role/{id}', [RolesController::class, 'edit'])->middleware('auth')->name('edit.role');
+// Route::get(uri: 'roles', [RolesController::class, 'index'])->middleware('auth')->name('roles');
+// Route::post('roles/{id}', [RolesController::class, 'destroy'])->middleware('auth')->name('delete.role');
+// Route::get('new-role', [RolesController::class, 'create'])->middleware('auth')->name('add.role');
+// Route::post('new-role', [RolesController::class, 'store'])->middleware('auth');
+// Route::post('edit-role/{id}', [RolesController::class, 'update'])->middleware('auth');
+// Route::get('edit-role/{id}', [RolesController::class, 'edit'])->middleware('auth')->name('edit.role');
 
 
 Route::middleware(['auth'])->group(function(){

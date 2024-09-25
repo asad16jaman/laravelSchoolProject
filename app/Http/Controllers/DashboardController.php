@@ -15,10 +15,19 @@ class DashboardController extends Controller
         $school = null;
         if(Auth::user()->role_id == 1){
             $school = School::where('user_id',Auth::user()->id)->get();
+            if($school->count()>0){
+                $school = $school[0];
+            }else{
+                $school = null;
+            }
+            return view('dashboard.index',['school' => $school]);
         }
 
-       
+        return view('dashboard.admin');
 
-        return view('dashboard.index',['school' => $school]);
+        
     }
+
+
+    
 }

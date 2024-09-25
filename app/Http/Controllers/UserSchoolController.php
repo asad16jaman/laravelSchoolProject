@@ -16,7 +16,8 @@ class UserSchoolController extends Controller
     //
     function create(){
         $mySchool = School::where('user_id',Auth::user()->id)->get();
-        return view('user.index', ['school' => $mySchool]);
+
+        return view('user.index', ['school' => ($mySchool->count()>0)?$mySchool : false]);
     }
 
     function store(Request $request){
@@ -71,7 +72,7 @@ class UserSchoolController extends Controller
 
     function download(){
         $mySchool = School::where('user_id',Auth::user()->id)->get();
-        return view('admin.template.download',['school'=>$mySchool[0]]);
+        return view('admin.template.download',['school'=> ($mySchool->count()>0) ?  $mySchool[0] : false]);
     }
 
     function confirm_download(Request $request){

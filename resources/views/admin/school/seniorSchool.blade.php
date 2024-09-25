@@ -1,9 +1,9 @@
 <x-page-template bodyClass='g-sidenav-show  bg-gray-200'>
-    <x-auth.navbars.sidebar activePage="laravel-examples" activeItem="user-management" activeSubitem="">
+    <x-auth.navbars.sidebar activePage="school-view" activeItem="user-management" activeSubitem="">
     </x-auth.navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-auth.navbars.navs.auth pageTitle="basic-view"></x-auth.navbars.navs.auth>
+        <x-auth.navbars.navs.auth pageTitle="senior-view"></x-auth.navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row mt-4">

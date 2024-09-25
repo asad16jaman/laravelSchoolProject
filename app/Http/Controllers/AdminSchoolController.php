@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\School;
 use App\Models\User;
+use App\Models\School;
+use App\Models\UserTemplate;
 use Illuminate\Http\Request;
+use App\Models\ConfirmTemplate;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AdminSchoolController extends Controller
@@ -107,8 +110,36 @@ class AdminSchoolController extends Controller
 
         $schoolType = $entity->type;
         if($entity){
+
+            //all template regurding this school is deleted
+            $userTem = UserTemplate::where('school_id' , $entity->id)->get();
+            if(!empty($userTem)){
+                foreach($userTem as $ob){
+                    if(file_exists(storage_path().'/app/public/'.$ob->path)){
+                        Storage::disk('public')->delete($ob->path);
+                    }
+                }
+                UserTemplate::where('school_id' , $entity->id)->delete();
+            }
+            
+
+           $confirmTable =  ConfirmTemplate::where('school_id',$entity->id)->get();
+           if(!empty($confirmTable)){
+                foreach($confirmTable as $ob){
+                    if(file_exists(storage_path().'/app/public/'.$ob->path)){
+                        Storage::disk('public')->delete($ob->path);
+                    }
+                }
+                ConfirmTemplate::where('school_id',$entity->id)->delete();
+           }
+           
+            
             $userId = $entity->user_id;
+
+            // //delete entity
             $entity->delete();
+
+            // //reset user school status
             $user = User::find($userId);
             $user->school = false;
             $user->save();
@@ -120,11 +151,15 @@ class AdminSchoolController extends Controller
             }
 
         }
+
         if($schoolType == 'basic'){
             return redirect()->route('basic.index')->with('error','this school is not exists');
         }else{
             return redirect()->route('senior.index')->with('error','this school is not exists');
         }
+
+
+        
     }
 
 

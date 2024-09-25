@@ -3,7 +3,10 @@
     <div class="sidenav-header text-center">
         <i class="fas fa-times p-3 cursor-pointer text-dark opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0 d-flex align-items-center text-wrap text-center" href="">
-            <img src="{{ asset('assets/frontend/') }}/img/logo/logo.png" class="navbar-brand-img h-100" alt="main_logo" style="min-height: 50px"> 
+            <i class="material-icons-round opacity-10">
+                School
+            </i>
+            <!-- <img src="{{ asset('assets/frontend/') }}/img/logo/logo.png" class="navbar-brand-img h-100" alt="main_logo" style="min-height: 50px">  -->
               <!-- <a href="{{url('/')}}"><img src="{{ asset('assets/frontend/') }}/img/logo/logo.png" alt="logo" style="height: 65px;"></a> -->
         </a>
     </div>
@@ -11,8 +14,9 @@
     <div class="collapse navbar-collapse  w-auto h-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <!-- //admin Section start------------------------------ -->
+            
             <li class="nav-item mb-2 mt-0">
-                <a data-bs-toggle="collapse" href="#ProfileNav" class="nav-link text-dark" aria-controls="ProfileNav" role="button" aria-expanded="false">
+                <a data-bs-toggle="collapse" href="#ProfileNav" class="nav-link text-dark{{ $activePage == 'dropdown' ? ' active ' : '' }}" aria-controls="ProfileNav" role="button" aria-expanded="false">
                     @if(Auth::user()->picture)
                         <img src="{{ asset('storage').'/'.Auth::user()->picture }}" alt="avatar" class="avatar">
                     @else
@@ -22,9 +26,9 @@
                     
                     
                     @if(Auth::user()->role_id == '1')
-                    <span class="nav-link-text ms-2 ps-1">{{Auth::user()->name }}</span>
+                    <span class="nav-link-text ms-2 ps-1">{{Auth::user()->name }} </span>
                     @else
-                    <span class="nav-link-text ms-2 ps-1">Admin</span>
+                    <span class="nav-link-text ms-2 ps-1">{{Auth::user()->name }} (Admin)</span>
                     @endif
                     
                 </a>
@@ -36,12 +40,7 @@
                                 <span class="sidenav-normal  ms-3  ps-1"> My Profile </span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark " href="">
-                                <span class="sidenav-mini-icon"> S </span>
-                                <span class="sidenav-normal  ms-3  ps-1"> Settings </span>
-                            </a>
-                        </li>
+                       
                         <form method="POST" action="{{ route('logout') }}" class="d-none" id="logout-form">
                             @csrf
                         </form>
@@ -62,8 +61,9 @@
 
 
                 <!-- //School route for Admin Start ------------------------------ -->
+                
                 <li class="nav-item mb-2 mt-0">
-                    <a data-bs-toggle="collapse" href="#viewSchool" class="nav-link text-dark" aria-controls="viewSchool" role="button" aria-expanded="false">
+                    <a data-bs-toggle="collapse" href="#viewSchool" class="nav-link text-dark {{ $activePage == 'user-upload' ? ' active ' : '' }}" aria-controls="viewSchool" role="button" aria-expanded="false">
                         <i class="material-icons-round opacity-10">dashboard</i>
                         <span class="nav-link-text ms-2 ps-1">Upload File</span>
                     </a>
@@ -87,16 +87,16 @@
                     </a>
                 </li> 
                 <li class="nav-item">
-                    <a href="{{ route('assesment.download') }}" class="nav-link text-dark {{ $activePage == 'calendar' ? ' active ' : '' }} ">
+                    <a href="{{ route('assesment.download') }}" class="nav-link text-dark {{ $activePage == 'download-assesment' ? ' active ' : '' }} ">
                         <i class="material-icons-round opacity-10">download</i>
                         <span class="nav-link-text ms-2 ps-1">Assessment Download</span>
                     </a>
-                </li> <li class="nav-item">
+                <!-- </li> <li class="nav-item">
                     <a href="" class="nav-link text-dark {{ $activePage == 'calendar' ? ' active ' : '' }} ">
                         <i class="material-icons-round opacity-10">date_range</i>
                         <span class="nav-link-text ms-2 ps-1">User Setting</span>
                     </a>
-                </li> 
+                </li>  -->
 
 
 
@@ -110,7 +110,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('users') }}" class="nav-link text-dark {{ $activePage == 'schools-create' ? ' active ' : '' }} ">
+                    <a href="{{ route('users') }}" class="nav-link text-dark {{ $activePage == 'laravel-examples' ? ' active ' : '' }} ">
                         <i class="material-icons-round opacity-10">dashboard</i>
                         <span class="nav-link-text ms-2 ps-1">Users</span>
                     </a>
@@ -125,13 +125,13 @@
 
                 <!-- //School route for Admin Start ------------------------------ -->
                 <li class="nav-item mb-2 mt-0">
-                    <a data-bs-toggle="collapse" href="#viewSchool" class="nav-link text-dark" aria-controls="viewSchool" role="button" aria-expanded="false">
+                    <a data-bs-toggle="collapse" href="#viewSchool" class="nav-link text-dark {{ $activePage == 'school-view' ? ' active ' : '' }}" aria-controls="viewSchool" role="button" aria-expanded="false">
                         <i class="material-icons-round opacity-10">dashboard</i>
                         <span class="nav-link-text ms-2 ps-1">View School</span>
                     </a>
                     <div class="collapse" id="viewSchool" style="">
                         <ul class="nav ">
-                            <li class="nav-item">
+                            <li class="nav-item {{ $activeItem == 'basic' ? ' active ' : '' }}">
                                 <a class="nav-link text-dark" href="{{ route('basic.index')}}">
                                     <span class="sidenav-normal  ms-3  ps-1">Basic School</span>
                                 </a>

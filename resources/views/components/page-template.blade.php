@@ -72,9 +72,9 @@
   <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script>
-    // document.addEventListener("contextmenu", function(event) {
-    //   window.location.reload();
-    // });
+    //  document.addEventListener("contextmenu", function(event) {
+    //    window.location.reload();
+    //  });
   </script>
   @stack('js')
   <script>

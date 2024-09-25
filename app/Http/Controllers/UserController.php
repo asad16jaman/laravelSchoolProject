@@ -11,7 +11,7 @@ use function PHPUnit\Framework\isNull;
 class UserController extends Controller
 {
     public function index(){
-
+        
         return view('laravel-examples.user-profile.edit');
     }
 

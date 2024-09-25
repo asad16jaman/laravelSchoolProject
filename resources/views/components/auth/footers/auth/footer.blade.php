@@ -6,8 +6,8 @@
             © <script>
               document.write(new Date().getFullYear())
             </script>
-            made with <i class="fa fa-heart"></i> by
-            <a href="#" class="font-weight-bold" target="_blank">Epic Social</a>  
+            made with <i class="fa fa-heart"></i>
+            <a href="#" class="font-weight-bold" target="_blank"></a>  
           </div>
         </div>
         <div class="col-lg-6">

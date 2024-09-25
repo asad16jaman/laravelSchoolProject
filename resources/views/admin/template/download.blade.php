@@ -1,11 +1,11 @@
 <x-page-template bodyClass='g-sidenav-show  bg-gray-200'>
-    <x-auth.navbars.sidebar activePage="schools-create" activeItem="sales" activeSubitem=""></x-auth.navbars.sidebar>
+    <x-auth.navbars.sidebar activePage="download-assesment" activeItem="sales" activeSubitem=""></x-auth.navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-auth.navbars.navs.auth pageTitle="create-page"></x-auth.navbars.navs.auth>
+        <x-auth.navbars.navs.auth pageTitle="download-assesment"></x-auth.navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container">
-
+            @if($school)
             <div class="card my-3 p-5">
                 <div class="card-title">
                     <h3 class="text-center">{{ ucfirst($school->name) }}</h3>
@@ -71,6 +71,24 @@
                 </form>
 
             </div>
+            @else
+            <div class="container mt-3">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card p-3">
+                        <div class="card-title text-center">
+                                    <h4>Welcome To Your School</h4>
+                        </div>
+                        <div class="card-body border p-3 rounded">
+                            
+                                <h5 class="text-center">You are not assigned any school by admin</h5>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+            @endif
 
 
             <x-auth.footers.auth.footer></x-auth.footers.auth.footer>
