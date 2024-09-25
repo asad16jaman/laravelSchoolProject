@@ -111,7 +111,7 @@
 
                 <li class="nav-item">
                     <a href="{{ route('users') }}" class="nav-link text-dark {{ $activePage == 'laravel-examples' ? ' active ' : '' }} ">
-                        <i class="material-icons-round opacity-10">dashboard</i>
+                        <i class="material-icons-round opacity-10">people</i>
                         <span class="nav-link-text ms-2 ps-1">Users</span>
                     </a>
                 </li>
@@ -126,7 +126,7 @@
                 <!-- //School route for Admin Start ------------------------------ -->
                 <li class="nav-item mb-2 mt-0">
                     <a data-bs-toggle="collapse" href="#viewSchool" class="nav-link text-dark {{ $activePage == 'school-view' ? ' active ' : '' }}" aria-controls="viewSchool" role="button" aria-expanded="false">
-                        <i class="material-icons-round opacity-10">dashboard</i>
+                        <i class="material-icons-round opacity-10">pages</i>
                         <span class="nav-link-text ms-2 ps-1">View School</span>
                     </a>
                     <div class="collapse" id="viewSchool" style="">
