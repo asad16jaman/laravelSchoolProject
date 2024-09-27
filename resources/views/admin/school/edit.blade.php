@@ -118,15 +118,24 @@
                                     <div class="col-lg-6">
                                         <div class="">
                                             <label for="schoolName" class="form-label">User</label>
-                                            <select name="user_id" class="form-select border px-3 @error('user_id') is-invalid @enderror" aria-label="Default select example">
-                                                <option value="">---Select--</option>
-                                                @foreach ($users as $user)
-                                                    <option value="{{ $user->id }}" @selected(old('user_id') == $user->id || $school->id == $user->id)>{{ $user->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('user_id') 
-                                                <p class="text-danger" style="font-size:12px">{{$message}}</p>
-                                             @enderror
+                                            @if(Auth::user()->role_id == 1 )
+                                                <select name="user_id" class="form-select border px-3" disabled aria-label="Default select example">
+                                                    <option value="{{Auth::user()->id}}">{{Auth::user()->name}}</option>
+                                                </select>
+                                            @else
+                                                <select name="user_id" class="form-select border px-3 @error('user_id') is-invalid @enderror" aria-label="Default select example">
+                                                    <option value="">---Select--</option>
+                                                    @foreach ($users as $user)
+                                                        <option value="{{ $user->id }}" @selected(old('user_id') == $user->id || $school->user_id == $user->id)>{{ $user->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('user_id') 
+                                                    <p class="text-danger" style="font-size:12px">{{$message}}</p>
+                                                @enderror
+
+
+                                            @endif
+                                            
                                         </div>
                                     </div>
                                 </div>

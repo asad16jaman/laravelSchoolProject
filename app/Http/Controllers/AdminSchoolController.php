@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\School;
 use App\Models\UserTemplate;
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\ConfirmTemplate;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +30,11 @@ class AdminSchoolController extends Controller
     }
 
     function create(){
-        $user = User::where('school',false)->get();
+        $user = [];
+        if(Auth::user()->role_id == 2){
+            $user = User::where('school',false)->get();
+        }
+        
 
       
         return view('admin.school.create',['users'=>$user]);
@@ -47,17 +52,38 @@ class AdminSchoolController extends Controller
             'address' => ['required'],
             'headmaster_name' => ['required'],
             'contact' => ['required'],
-            'user_id' => ['required'],
         ]);
 
         if($validate->fails()){
             return redirect()->route('school.create')->withErrors($validate->errors())->withInput();
         }
 
-        $ob = School::create($request->all());
-        $user = User::find($request->user_id);
-        $user->school = true;
-        $user->save();
+        $school_data = $request->all();
+        if(Auth::user()->role_id == 1 ){
+            $school_data['user_id'] = Auth::user()->id;
+        }
+
+        $ob = School::create($school_data);
+
+        // update user table
+        
+        if(Auth::user()->role_id == 1 ){
+            $authUser = User::find(Auth::user()->id);
+            $authUser->school = true;
+            $authUser->save();
+        }else{
+            $authUser = User::find($request->user_id);
+            $authUser->school = true;
+            $authUser->save();
+
+        }
+
+           
+
+
+        if(Auth::user()->role_id == 1){
+            return redirect()->route('dashboard')->with('status','successfully added Your School');
+        }
 
         if($ob->type == 'basic'){
             return redirect()->route('basic.index')->with('status','successfully added Basic school');
@@ -70,7 +96,10 @@ class AdminSchoolController extends Controller
 
 
     public function edit(int $id){
+        $user = [];
+       if(Auth::user()->role_id == 2){
         $user = User::all();
+       }
         $school = School::find($id);
         return view('admin.school.edit',['users'=>$user,'school'=>$school]);
     }
@@ -85,7 +114,6 @@ class AdminSchoolController extends Controller
             'address' => ['required'],
             'headmaster_name' => ['required'],
             'contact' => ['required'],
-            'user_id' => ['required'],
         ]);
 
         if($validate->fails()){
@@ -94,7 +122,11 @@ class AdminSchoolController extends Controller
 
         $updatedData = $request->all();
         unset($updatedData['_token']);
-         School::where('id',$id)->update($updatedData);
+        School::where('id',$id)->update($updatedData);
+
+        if(Auth::user()->role_id == 1){
+            return redirect()->route('dashboard')->with('status','successfully added Basic school');
+        }
 
         if($request->type == 'basic'){
             return redirect()->route('basic.index')->with('status','successfully update Basic school');

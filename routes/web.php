@@ -22,7 +22,7 @@ use App\Http\Controllers\UserManagementController;
 |
 */
 
-Route::get('/', [DashboardController::class,'index'])->name('dashboard')->middleware('auth');
+Route::get('/', [DashboardController::class,'index'])->name('dashboard')->middleware(['auth','schoolCheker']);
 
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('sign-up', [RegisterController::class, 'store'])->middleware('guest');
@@ -55,14 +55,23 @@ Route::post('user-profile/password', [UserController::class, 'passwordUpdate'])-
 // Route::post('edit-role/{id}', [RolesController::class, 'update'])->middleware('auth');
 // Route::get('edit-role/{id}', [RolesController::class, 'edit'])->middleware('auth')->name('edit.role');
 
+//user route group
+Route::middleware(['auth','schoolCheker'])->group(function(){
+     //download template
+     Route::get('/template-download',[UserSchoolController::class ,'template'])->name('template.download');
+     //upload template from 
+     Route::get('/upload',[UserSchoolController::class ,'create'])->name('template.upload');
+     Route::post('/upload',[UserSchoolController::class ,'store']);
+     //download assesment 
+     Route::get('/assesment-download',[UserSchoolController::class ,'download'])->name('assesment.download');
+     Route::post('/assesment-download',[UserSchoolController::class ,'confirm_download'])->name('assesment.download');
+});
 
+
+
+
+//admin route group
 Route::middleware(['auth'])->group(function(){
-
-    Route::get('/upload',[UserSchoolController::class ,'create'])->name('template.upload');
-    Route::post('/upload',[UserSchoolController::class ,'store']);
-    Route::get('/template-download',[UserSchoolController::class ,'template'])->name('template.download');
-    Route::get('/assesment-download',[UserSchoolController::class ,'download'])->name('assesment.download');
-    Route::post('/assesment-download',[UserSchoolController::class ,'confirm_download'])->name('assesment.download');
 
     Route::get('/basic-view',[AdminSchoolController::class,'basicSchool_index'])->name('basic.index');
     Route::get('/senior-view',[AdminSchoolController::class,'seniorSchool_index'])->name('senior.index');
@@ -96,21 +105,5 @@ Route::middleware(['auth'])->group(function(){
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

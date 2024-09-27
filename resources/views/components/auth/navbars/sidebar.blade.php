@@ -1,14 +1,12 @@
 @props(['activePage', 'activeItem', 'activeSubitem'])
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-white" id="sidenav-main">
+<aside style="background:white" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-white" id="sidenav-main">
     <div class="sidenav-header text-center">
         <i class="fas fa-times p-3 cursor-pointer text-dark opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0 d-flex align-items-center text-wrap text-center" href="">
             <i class="material-icons-round opacity-10">
                 School
             </i>
-            <!-- <img src="{{ asset('assets/frontend/') }}/img/logo/logo.png" class="navbar-brand-img h-100" alt="main_logo" style="min-height: 50px">  -->
-              <!-- <a href="{{url('/')}}"><img src="{{ asset('assets/frontend/') }}/img/logo/logo.png" alt="logo" style="height: 65px;"></a> -->
-        </a>
+      </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto h-auto" id="sidenav-collapse-main">
@@ -20,15 +18,12 @@
                     @if(Auth::user()->picture)
                         <img src="{{ asset('storage').'/'.Auth::user()->picture }}" alt="avatar" class="avatar">
                     @else
-                    <img src="{{ asset('assets') }}/img/default-avatar.png" alt="avatar" class="avatar">
+                        <img src="{{ asset('assets') }}/img/default-avatar.png" alt="avatar" class="avatar">
                     @endif
-
-                    
-                    
                     @if(Auth::user()->role_id == '1')
-                    <span class="nav-link-text ms-2 ps-1">{{Auth::user()->name }} </span>
+                        <span class="nav-link-text ms-2 ps-1">{{Auth::user()->name }} </span>
                     @else
-                    <span class="nav-link-text ms-2 ps-1">{{Auth::user()->name }} (Admin)</span>
+                        <span class="nav-link-text ms-2 ps-1">{{Auth::user()->name }} (Admin)</span>
                     @endif
                     
                 </a>

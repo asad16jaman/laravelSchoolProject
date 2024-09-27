@@ -5,8 +5,17 @@
         <x-auth.navbars.navs.auth pageTitle="Sales"></x-auth.navbars.navs.auth>
         <!-- End Navbar -->
         @if (Session::has('error'))
-                        <div class="alert alert-danger alert-dismissible text-white mx-4" role="alert">
+                        <div class="alert alert-danger alert-dismissible text-white mx-4 mt-3" role="alert">
                             <span class="text-sm">{{ Session::get('error') }}</span>
+                            <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+        @endif
+        @if (Session::has('status'))
+                        <div class="alert alert-success alert-dismissible text-white mx-4 mt-3" role="alert">
+                            <span class="text-sm">{{ Session::get('status') }}</span>
                             <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert"
                                 aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -30,6 +39,11 @@
                                 <p>Phone : {{ $school->contact }}</p>
                                 <p>Distric: {{ $school->district?? "none"}} , Region {{ $school->region?? "none" }}</p>
                                 <small>Address : {{ $school->address}}</small>
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ route('school.eidt',$school->id) }}" class="btn border">
+                                    <i class="material-icons-round opacity-10">edit</i>
+                                    </a>
+                                </div>
                             @else
                                 <h5 class="text-center">You are not assigned any school by admin</h5>
                             @endif
